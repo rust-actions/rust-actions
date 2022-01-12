@@ -1,4 +1,15 @@
 {
   "name": "@rust-actions/core",
-  "version": "0.0.1"
+  "version": "0.1.0-dev",
+  "author": "rust-actions",
+  "license": "(MIT OR Apache-2.0)",
+  "description": "Core functionality for the @rust-action packages",
+  "repository": {
+    "type": "git",
+    "url": "github:rust-actions/rust-actions",
+    "directory": "libs/core"
+  },
+  "bugs": {
+    "url": "https://github.com/rust-actions/rust-actions/issues"
+  }
 }

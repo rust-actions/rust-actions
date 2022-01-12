@@ -10,7 +10,7 @@
         "outputPath": "dist/libs/core",
         "tsConfig": "libs/core/tsconfig.lib.json",
         "packageJson": "libs/core/package.json",
-        "main": "libs/core/src/index.ts",
+        "main": "libs/core/src/core.ts",
         "assets": ["libs/core/*.md"]
       }
     },
