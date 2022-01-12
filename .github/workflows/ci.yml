@@ -1,0 +1,68 @@
+name: CI
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - "**"
+      - "!/*.md"
+      - "!/docs/**"
+      - "!/LICENSE-*.txt"
+
+  pull_request:
+    paths:
+      - "**"
+      - "!/*.md"
+      - "!/docs/**"
+      - "!/LICENSE-*.txt"
+
+  workflow_dispatch:
+
+jobs:
+  ci:
+    needs: [format, test]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Done
+        run: exit 0
+
+  format:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "16"
+
+      - name: Yarn Install
+        run: >-
+          yarn install --prefer-offline --frozen-lockfile --non-interactive
+
+      - name: Format
+        run: yarn nx format:check
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - uses: nrwl/nx-set-shas@v2
+
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "16"
+
+      - name: Yarn Install
+        run: >-
+          yarn install --prefer-offline --frozen-lockfile --non-interactive
+
+      - name: Build
+        run: yarn nx affected --target=build --parellel --max-parallel=3
+
+      - name: Test
+        run: yarn nx affected --target=test --parallel --max-parallel=2
