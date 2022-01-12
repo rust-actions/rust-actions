@@ -1,6 +1,6 @@
 # Rust Actions
 
-Actions for working with rust code.
+Actions for working with rust code. Inspired by [actions-rs](https://github.com/actions-rs).
 
 ## License
 
@@ -9,6 +9,5 @@ license at your option.
 
 ## Contribution
 
-Unless stated otherwise, any contribution submitted for inclusion in
-this work shall be licensed as above without any additional terms
-and conditions.
+Unless stated otherwise, any contribution submitted for inclusion in this work shall be licensed as above without any
+additional terms and conditions.
