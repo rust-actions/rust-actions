@@ -15,12 +15,14 @@ export default async function (tree: Tree, schema: ActionSchema) {
   const configuration = readProjectConfiguration(tree, schema.name);
   const src = `${configuration.root}/src`;
 
+  // replace source files
   tree.delete(src);
   generateFiles(tree, join(__dirname, "files"), configuration.root, {
     ...schema,
     template: "",
   });
 
+  // use ncc as builder
   const out = `dist/apps/${schema.name}`;
   delete configuration.targets["serve"];
   configuration.targets["build"] = {
@@ -34,6 +36,11 @@ export default async function (tree: Tree, schema: ActionSchema) {
     },
   };
   updateProjectConfiguration(tree, schema.name, configuration);
+
+  // patch tsconfig.json
+  const tsConfig = JSON.parse(tree.read(`${src}/tsconfig.json`, "utf8"));
+  tsConfig["compilerOptions"]["rootDir"] = "../..";
+  tree.write(`${src}/tsconfig.json`, tsConfig);
 
   await formatFiles(tree);
 }
