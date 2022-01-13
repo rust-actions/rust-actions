@@ -23,6 +23,7 @@
   },
   "devDependencies": {
     "@nrwl/cli": "13.4.4",
+    "@nrwl/devkit": "13.4.4",
     "@nrwl/eslint-plugin-nx": "13.4.4",
     "@nrwl/jest": "13.4.4",
     "@nrwl/js": "13.4.4",
@@ -35,6 +36,7 @@
     "@types/semver": "^7.3.9",
     "@typescript-eslint/eslint-plugin": "~5.3.0",
     "@typescript-eslint/parser": "~5.3.0",
+    "@vercel/ncc": "^0.33.1",
     "eslint": "8.2.0",
     "eslint-config-prettier": "8.1.0",
     "jest": "27.2.3",
