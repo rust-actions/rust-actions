@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/schema",
+  "cli": "nx",
+  "$id": "action",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Action name",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      }
+    },
+    "description": {
+      "type": "string",
+      "description": "Action description",
+      "x-prompt": "Describe the action in one sentence"
+    }
+  },
+  "required": ["name", "description"]
+}

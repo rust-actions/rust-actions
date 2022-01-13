@@ -1,0 +1,7 @@
+name: <%= name %>
+description: <%= description %>
+author: rust-actions team
+# TODO enter branding and inputs
+runs:
+  using: 'node16'
+  main: 'index.js'
